@@ -829,9 +829,6 @@ impl StateManager {
     fn collect_all_children_recursive(node: &Gd<Node>) -> Vec<Gd<Node>> {
         let mut descendants = Vec::new();
         for child in node.get_children().iter_shared() {
-            if !child.is_instance_valid() {
-                continue;
-            }
             descendants.push(child.clone());
             descendants.extend(StateManager::collect_all_children_recursive(&child));
         }
